@@ -19,7 +19,7 @@ document.getElementById('calculate').addEventListener('click', function() {
 
       // JSON'dan cevap anahtarını ve girencileri alıyoruz
       const correctAnswers = data.cevapAnahtari;  // Cevap anahtarı
-      const entrants = data.girenler;  // Giren kişiler
+      const entrants = data.girenler;  // Giren HADİ DÜZEL
 
       // Girenciler dizisinin var olup olmadığını kontrol ediyoruz
       if (!Array.isArray(entrants)) {
