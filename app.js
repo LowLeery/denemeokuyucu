@@ -13,15 +13,18 @@ document.getElementById('calculate').addEventListener('click', function() {
   
   reader.onload = function(event) {
     const data = JSON.parse(event.target.result);
+
+    // JSON dosyasından cevap anahtarını alıyoruz
+    const correctAnswers = data.cevapAnahtari;  // JSON'dan cevap anahtarını alıyoruz
     
-    const correctAnswers = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'E'];  // Örnek doğru cevaplar
-    const results = data.map(entry => {
+    const results = data.girenciler.map(entry => {
       const { isim, soyisim, cevaplar } = entry;
       
       let score = 0;
       let wrong = 0;
       let empty = 0;
       
+      // Cevapları kontrol et
       for (let i = 0; i < cevaplar.length; i++) {
         if (cevaplar[i] === correctAnswers[i]) {
           score++;
