@@ -32,5 +32,5 @@ Okullarda Olduğunuz Veya Kendi Yaptığınız Sınav ve Denemeleri Okumak İçi
 - İsimler örnek olarak kullanışmış olup kimsenin gizliliği ihlal edilmemiştir.
 
 # Bknz.
-- Projenin Github-Pages Sitesi[site](https://lowleery.github.io/denemeokuyucu/)
-- Siteme Göz Atınız [reklam](https://yardimet.vercel.app)
+- Projenin Github-Pages Sitesi [tıklayınız](https://lowleery.github.io/denemeokuyucu/)
+- Siteme Göz Atınız [tıklayınız](https://yardimet.vercel.app)
