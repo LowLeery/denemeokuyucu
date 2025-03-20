@@ -17,7 +17,7 @@ document.getElementById('calculate').addEventListener('click', function() {
     // JSON dosyasından cevap anahtarını alıyoruz
     const correctAnswers = data.cevapAnahtari;  // JSON'dan cevap anahtarını alıyoruz
     
-    const results = data.girenciler.map(entry => {
+    const results = data.girenler.map(entry => {
       const { isim, soyisim, cevaplar } = entry;
       
       let score = 0;
