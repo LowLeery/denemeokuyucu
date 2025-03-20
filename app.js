@@ -1,3 +1,5 @@
+let results = [];
+
 document.getElementById('calculate').addEventListener('click', function() {
   const fileInput = document.getElementById('json-upload');
   
@@ -19,14 +21,14 @@ document.getElementById('calculate').addEventListener('click', function() {
 
       // JSON'dan cevap anahtarını ve girencileri alıyoruz
       const correctAnswers = data.cevapAnahtari;  // Cevap anahtarı
-      const entrants = data.girenler;  // Giren HADİ DÜZEL
+      const entrants = data.girenler;  // Giren
 
       // Girenciler dizisinin var olup olmadığını kontrol ediyoruz
       if (!Array.isArray(entrants)) {
         throw new Error("Giren kişilerin verisi geçerli değil!");
       }
 
-      const results = entrants.map(entry => {
+      results = entrants.map(entry => {
         const { isim, soyisim, cevaplar } = entry;
         
         let score = 0;
@@ -59,15 +61,8 @@ document.getElementById('calculate').addEventListener('click', function() {
       });
       
       // Sonuçları liste olarak göster
-      const resultsList = document.getElementById('results-list');
-      resultsList.innerHTML = '';  // Listeyi temizle
+      displayResults(results);
 
-      results.forEach(result => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${result.isim} ${result.soyisim} - Doğru: ${result.doğru}, Yanlış: ${result.yanlış}, Boş: ${result.boş}, Net: ${result.net}`;
-        resultsList.appendChild(listItem);
-      });
-      
     } catch (error) {
       alert("Bir hata oluştu: " + error.message);
       console.error(error);
@@ -75,4 +70,27 @@ document.getElementById('calculate').addEventListener('click', function() {
   };
   
   reader.readAsText(file);
+});
+
+function displayResults(results) {
+  const resultsList = document.getElementById('results-list');
+  resultsList.innerHTML = '';  // Listeyi temizle
+
+  results.forEach(result => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${result.isim} ${result.soyisim} - Doğru: ${result.doğru}, Yanlış: ${result.yanlış}, Boş: ${result.boş}, Net: ${result.net}`;
+    resultsList.appendChild(listItem);
+  });
+}
+
+// En yüksekten en aza sıralama
+document.getElementById('sort-high-to-low').addEventListener('click', function() {
+  const sortedResults = [...results].sort((a, b) => b.net - a.net);
+  displayResults(sortedResults);
+});
+
+// En azdan en yükseğe sıralama
+document.getElementById('sort-low-to-high').addEventListener('click', function() {
+  const sortedResults = [...results].sort((a, b) => a.net - b.net);
+  displayResults(sortedResults);
 });
