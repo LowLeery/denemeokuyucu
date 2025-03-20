@@ -46,8 +46,15 @@ document.getElementById('calculate').addEventListener('click', function() {
       };
     });
     
-    // Sonuçları JSON formatında göster
-    document.getElementById('results').textContent = JSON.stringify(results, null, 2);
+    // Sonuçları liste olarak göster
+    const resultsList = document.getElementById('results-list');
+    resultsList.innerHTML = '';  // Listeyi temizle
+
+    results.forEach(result => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${result.isim} ${result.soyisim} - Doğru: ${result.doğru}, Yanlış: ${result.yanlış}, Boş: ${result.boş}, Net: ${result.net}`;
+      resultsList.appendChild(listItem);
+    });
   };
   
   reader.readAsText(file);
